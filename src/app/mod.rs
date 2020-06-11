@@ -1,9 +1,9 @@
 use actix_web::{HttpServer, App, web};
 
 mod index;
+mod tukar_uang;
 
-pub fn start() {
-    let address = "0.0.0.0:8000";
+pub fn start(address: String) {
     HttpServer::new(|| {
         App::new().configure(routes)
     })
@@ -16,4 +16,5 @@ pub fn start() {
 
 fn routes(app: &mut web::ServiceConfig) {
     app.route("/", web::get().to(index::get));
+    app.route("/tukar_uang", web::post().to(tukar_uang::handle));
 }
