@@ -8,11 +8,11 @@ pub struct TukarUangRequest {
 
 #[derive(Serialize)]
 pub struct TukarUangResponse {
-    pub total_koin_minimal: usize,
+    pub total_koin_minimal: i32,
 }
 
 impl TukarUangResponse {
-    pub fn new(total: usize) -> Self {
+    pub fn new(total: i32) -> Self {
         TukarUangResponse {
             total_koin_minimal: total,
         }
