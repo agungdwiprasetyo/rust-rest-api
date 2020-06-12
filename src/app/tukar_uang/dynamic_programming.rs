@@ -10,8 +10,16 @@ pub fn calculate_dp(elements: Vec<usize>, el: usize) -> i32 {
         for j in 0..n {
             let visit = elements[j];
             if visit <= i {
-                let idx: usize = (visit) as usize;
-                max = cmp::min(max, tabel_dp[i-idx]+1);
+                let idx: usize = (visit) as usize; 
+                let val: i32 = tabel_dp[i-idx] as i32;
+                match val.checked_add(1) {
+                    Some(v) => {
+                        max = cmp::min(max, v);
+                    }
+                    None => {
+                        println!("i32 overflow");
+                    }
+                }
             }
         }
         tabel_dp[i] = max;
