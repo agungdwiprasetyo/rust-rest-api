@@ -11,7 +11,7 @@ pub fn calculate_dp(elements: Vec<usize>, el: usize) -> usize {
             let visit = elements[j];
             if visit <= i {
                 let idx: usize = (visit) as usize;
-                max = cmp::min(max, tabel_dp[idx]+1);
+                max = cmp::min(max, tabel_dp[i-idx]+1);
             }
         }
         tabel_dp[i] = max;
