@@ -1,9 +1,14 @@
 use actix;
+use dotenv::dotenv;
+use std::env;
 
 mod app;
 
 fn main() {
+    dotenv().ok();
+
+    let port = env::var("PORT");
     let sys = actix::System::new("gendon");
-    app::start("0.0.0.0:8000".to_string());
+    app::start(port.unwrap());
     let _ = sys.run();
 }
