@@ -2,6 +2,7 @@ use actix_web::{HttpServer, App, web};
 
 mod index;
 mod tukar_uang;
+mod gopkg;
 
 pub fn start(address: String) {
     HttpServer::new(|| {
@@ -17,4 +18,5 @@ pub fn start(address: String) {
 fn routes(app: &mut web::ServiceConfig) {
     app.route("/", web::get().to(index::get));
     app.route("/tukar_uang", web::post().to(tukar_uang::handle));
+    app.route("/gopkg/candi", web::get().to(gopkg::candi));
 }
