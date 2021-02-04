@@ -1,5 +1,20 @@
 use actix_web::{HttpRequest, Responder, HttpResponse};
 
+pub async fn index(_req: HttpRequest) -> impl Responder {
+	HttpResponse::Ok().content_type("text/html").body("
+<html>
+<head>
+<title>Golang Package</title>
+</head>
+
+<body>
+	<h1>Golang Package List:</h1>
+	<a href=\"https://pkg.agungdp.dev/candi\">Candi</a>
+</body>
+
+</html>")
+}
+
 pub async fn candi(_req: HttpRequest) -> impl Responder {
     HttpResponse::Ok().content_type("text/html").body("
 <html>
